@@ -1,0 +1,36 @@
+name: 🚀 Deploy Next.js Portfolio to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # or 'main' if that's your default branch
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: 📦 Install Dependencies
+        run: npm install
+
+      - name: 🔧 Build and Export Static Site
+        run: |
+          npm run build
+          npm run export
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
