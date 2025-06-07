@@ -1,14 +1,14 @@
-/** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
-  output: "export",  // This enables static export automatically
-  trailingSlash: true,
-  assetPrefix: isProd ? "https://bhaveshkeshrani.github.io" : "",
+  output: "export",        // enables next export behavior
+  trailingSlash: true,     // makes URLs with trailing slash (good for GitHub Pages)
+  assetPrefix: isProd ? "https://bhaveshkeshrani.github.io/" : "",
+
   images: {
-    unoptimized: true,
+    unoptimized: true,     // disables next/image optimization (needed for static export)
     remotePatterns: [
       { protocol: "https", hostname: "**.githubusercontent.com" },
       { protocol: "https", hostname: "**.github.com" },
@@ -16,5 +16,3 @@ const nextConfig = {
     ],
   },
 };
-
-module.exports = nextConfig;
