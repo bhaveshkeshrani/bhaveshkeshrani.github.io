@@ -5,11 +5,9 @@
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",
-    "export": "next export",
     "start": "next start",
     "lint": "next lint",
-    "push": "git add -A && git commit -m \"Update Changes & Bug Fixes\" && git push origin master",
-    "deploy": "gh-pages -d out"
+    "push": "git add -A && git commit -m \"Update Changes & Bug Fixes\" && git push origin main"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",

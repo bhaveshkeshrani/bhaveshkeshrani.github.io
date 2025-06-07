@@ -4,7 +4,9 @@ const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: "export",
+  output: "export",  // This enables static export automatically
+  trailingSlash: true,
+  assetPrefix: isProd ? "https://bhaveshkeshrani.github.io" : "",
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -13,8 +15,6 @@ const nextConfig = {
       { protocol: "https", hostname: "**.amazonaws.com" }
     ],
   },
-  trailingSlash: true,
-  assetPrefix: isProd ? "https://bhaveshkeshrani.github.io" : "",
 };
 
 module.exports = nextConfig;
